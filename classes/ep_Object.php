@@ -1,4 +1,4 @@
-<?
+<?php
   abstract class ep_Object extends ep_Api {
 	 
 		public $id;
