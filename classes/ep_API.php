@@ -110,4 +110,3 @@
 		  return '<span class="_ds" value="' . $data . '">' . $rok . ' ' . $_miesiace[ $miesiac ] . ' ' . $dzien . ' r.</span>';
 		}
 	}
-?>
