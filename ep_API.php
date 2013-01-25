@@ -1,4 +1,4 @@
-<?
+<?php
   // PONIŻEJ WKLEJ SWOJE KLUCZE API. ABY JE UZYSKAĆ, MUSISZ ZAREJETROWAĆ KONTO NA PORTALU http://sejmometr.pl
   // WIĘCEJ INFORMACJI NA http://sejmometr.pl/api
   

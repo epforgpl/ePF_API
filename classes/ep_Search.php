@@ -1,4 +1,4 @@
-<?
+<?php
   class ep_Search extends ep_Api {
 	
 	  public $q;

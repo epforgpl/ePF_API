@@ -1,4 +1,4 @@
-<?
+<?php
  class ep_Api {
 	
 		public $_version = '0.1';
