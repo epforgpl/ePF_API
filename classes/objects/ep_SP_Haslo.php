@@ -1,5 +1,4 @@
 <?php
-
 class ep_SP_Haslo extends ep_Object{
 
 	public $_aliases = array( 'sp_orzeczenia_hasla' );
@@ -13,14 +12,6 @@ class ep_SP_Haslo extends ep_Object{
 	 * @var ep_Orzeczenie_sp
 	 */
 	protected $_orzeczenie_sp = null;
-
-
-	/**
-	 * @return int
-	 */
-	public function get_id(){
-		return (int) $this->data['id'];
-	}
 
 	/**
 	 * @return int
@@ -55,6 +46,4 @@ class ep_SP_Haslo extends ep_Object{
 		}
 		return $this->_orzeczenie_sp;
 	}
-
-
 }

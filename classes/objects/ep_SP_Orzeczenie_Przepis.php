@@ -1,5 +1,4 @@
 <?php
-
 class ep_SP_Orzeczenie_Przepis extends ep_Object{
 
 	public $_aliases = array( 'sp_przepisy' );
@@ -8,14 +7,6 @@ class ep_SP_Orzeczenie_Przepis extends ep_Object{
 	 * @var ep_Orzeczenie_sp
 	 */
 	protected $_orzeczenie_sp = null;
-
-
-	/**
-	 * @return int
-	 */
-	public function get_id(){
-		return (int) $this->data['id'];
-	}
 
 	/**
 	 * @return int
@@ -54,6 +45,4 @@ class ep_SP_Orzeczenie_Przepis extends ep_Object{
 		}
 		return $this->_orzeczenie_sp;
 	}
-
-
 }

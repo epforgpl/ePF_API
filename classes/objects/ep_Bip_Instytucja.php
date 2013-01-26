@@ -1,16 +1,7 @@
 <?php
-
 class ep_Bip_Instytucja extends ep_Object{
 
 	public $_aliases = array( 'bip_instytucje' );
-
-
-	/**
-	 * @return int
-	 */
-	public function get_id(){
-		return (int) $this->data['id'];
-	}
 
 	/**
 	 * @return string
@@ -25,6 +16,4 @@ class ep_Bip_Instytucja extends ep_Object{
 	public function __toString(){
 		return (string) $this->get_nazwa();
 	}
-
-
 }

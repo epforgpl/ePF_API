@@ -1,5 +1,4 @@
 <?php
-
 class ep_Orzeczenie_sp_osoba_stanowisko extends ep_Object{
 
 	public $_aliases = array( 'sp_ludzie_stanowiska' );
@@ -18,14 +17,6 @@ class ep_Orzeczenie_sp_osoba_stanowisko extends ep_Object{
 	 * @var ep_SP_Stanowisko
 	 */
 	protected $_orzeczenie_sp_stanowisko = null;
-
-
-	/**
-	 * @return int
-	 */
-	public function get_id(){
-		return (int) $this->data['id'];
-	}
 
 	/**
 	 * @return int
@@ -77,6 +68,4 @@ class ep_Orzeczenie_sp_osoba_stanowisko extends ep_Object{
 		}
 		return $this->_orzeczenie_sp_stanowisko;
 	}
-
-
 }

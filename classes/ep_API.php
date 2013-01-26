@@ -1,152 +1,109 @@
-<?
- class ep_Api {
-	
-		public $_version = '0.1';
-		public $server_address = 'http://ep_api.sejmometr.pl/v1/'; 
-		private $_key = eP_API_KEY;
-		private $_secret = eP_API_SECRET;
-	  
-	  
-	
-		/**
-		 * @return ep_Api
-		 */
-		static public function init(){
-			return new ep_Api();
-		}
-		
-		public function call( $service, $params ){
-	    $service = trim( $service );
-	    
-	    if( !$service )
-	      return false;	    
-	    
-      parse_str( http_build_query( $params ), $params );
-      $params[ 'sign' ] = $this->generate_sig( $params );
-      $params[ 'key' ] = $this->_key;
+<?php
+class ep_Api {
 
-      $request_url = $this->server_address . $service;
-      	
-      
-      $data = '';
-      $ch = curl_init();
-      curl_setopt($ch, CURLOPT_URL, $request_url );
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
-      curl_setopt($ch, CURLOPT_POST, 1 );
-      curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query( $params ) );
-      $data = curl_exec( $ch );
-      
-      
-      $this->http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-      curl_close($ch);
-      
-      switch( $this->http_code ) {
-	      
-	      case '401': {
-		      throw new Exception('Brak kluczy eP_API. Zarejestruj konto na portalu http://sejmometr.pl i pobierz swoje prywatne klucze.');
-	      }
-	      
-	      case '402': {
-		      throw new Exception('Przekroczony limit żądań (3000 żądań na dobę).');
-	      }
-	      
-	      case '200': {
-		      return json_decode( $data, true );
-	      }
-	      
-      }
+	public $_version = '0.1';
+	public $server_address = 'http://ep_api.sejmometr.pl/v1/';
+	private $_key = eP_API_KEY;
+	private $_secret = eP_API_SECRET;
 
-      
+	/**
+	 * @return ep_Api
+	 */
+	static public function init(){
+		return new ep_Api();
+	}
 
-    }
-		
-				
-		
-		
-		
-		/**
-		 * @param array $params
-		 * @return string
-		 */
-		private function generate_sig( $params ){	
-			$str = json_encode( $params );
-			$str .= $this->_secret;
-		
-			return md5( $str );		 
+	public function call( $service, $params ){
+		$service = trim( $service );
+
+		if( !$service ){
+			return false;
 		}
-	}
-	
-	
-	
-	
-	
-	// Helper functions
-	
-	if( !function_exists('sm_data_slowna') ) {
-		function sm_data_slowna( $data ) {
-		  $_miesiace = array(
-		    1 => 'stycznia',
-		    2 => 'lutego',
-		    3 => 'marca',
-		    4 => 'kwietnia',
-		    5 => 'maja',
-		    6 => 'czerwca',
-		    7 => 'lipca',
-		    8 => 'sierpnia',
-		    9 => 'września',
-		    10 => 'października',
-		    11 => 'listopada',
-		    12 => 'grudnia',
-		  );
-		  
-		  $data = trim( strip_tags( $data ) );
-		  $parts = explode('-', $data);
-		  if( count($parts)!=3 ) return $data;
-		  
-		  $rok = (int) $parts[2];
-		  $miesiac = (int) $parts[1];
-		  $dzien = (int) $parts[0];
-		  
-		  return '<span class="_ds" value="' . $data . '">' . $rok . ' ' . $_miesiace[ $miesiac ] . ' ' . $dzien . ' r.</span>';
+
+		parse_str( http_build_query( $params ), $params );
+		$params[ 'sign' ] = $this->generate_sig( $params );
+		$params[ 'key' ] = $this->_key;
+
+		$request_url = $this->server_address . $service;
+
+		$data = '';
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $request_url );
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+		curl_setopt($ch, CURLOPT_POST, 1 );
+		curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query( $params ) );
+		$data = curl_exec( $ch );
+
+		$this->http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+		curl_close($ch);
+
+		switch( $this->http_code ) {
+
+			case '401': {
+				throw new Exception('Brak kluczy eP_API. Zarejestruj konto na portalu http://sejmometr.pl i pobierz swoje prywatne klucze.');
+			}
+
+			case '402': {
+				throw new Exception('Przekroczony limit żądań (3000 żądań na dobę).');
+			}
+
+			case '200': {
+				return json_decode( $data, true );
+			}
 		}
+
 	}
-	
-	if( !function_exists('sm_data_slowna') ) {
-		function sm_data_slowna( $data ) {
-		  $_miesiace = array(
-		    1 => 'stycznia',
-		    2 => 'lutego',
-		    3 => 'marca',
-		    4 => 'kwietnia',
-		    5 => 'maja',
-		    6 => 'czerwca',
-		    7 => 'lipca',
-		    8 => 'sierpnia',
-		    9 => 'września',
-		    10 => 'października',
-		    11 => 'listopada',
-		    12 => 'grudnia',
-		  );
-		  
-		  $data = trim( strip_tags( $data ) );
-		  $parts = explode('-', $data);
-		  if( count($parts)!=3 ) return $data;
-		  
-		  $rok = (int) $parts[2];
-		  $miesiac = (int) $parts[1];
-		  $dzien = (int) $parts[0];
-		  
-		  return '<span class="_ds" value="' . $data . '">' . $rok . ' ' . $_miesiace[ $miesiac ] . ' ' . $dzien . ' r.</span>';
+
+	/**
+	 * @param array $params
+	 * @return string
+	 */
+	private function generate_sig( $params ){
+		$str = json_encode( $params );
+		$str .= $this->_secret;
+
+		return md5( $str );
+	}
+}
+
+// Helper functions
+
+if( !function_exists('sm_data_slowna') ) {
+	function sm_data_slowna( $data ) {
+		$_miesiace = array(
+				1 => 'stycznia',
+				2 => 'lutego',
+				3 => 'marca',
+				4 => 'kwietnia',
+				5 => 'maja',
+				6 => 'czerwca',
+				7 => 'lipca',
+				8 => 'sierpnia',
+				9 => 'września',
+				10 => 'października',
+				11 => 'listopada',
+				12 => 'grudnia',
+		);
+
+		$data = trim( strip_tags( $data ) );
+		$parts = explode('-', $data);
+		if( count($parts)!=3 ) {
+			return $data;
 		}
+
+		$rok = (int) $parts[2];
+		$miesiac = (int) $parts[1];
+		$dzien = (int) $parts[0];
+
+		return '<span class="_ds" value="' . $data . '">' . $rok . ' ' . $_miesiace[ $miesiac ] . ' ' . $dzien . ' r.</span>';
 	}
-	
-	
-	if( !function_exists('sm_dzien_slowny') ) {
-		function sm_dzien_slowny( $data ){
-			$dni = array('Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela');
-			$w = (int) date('w', strtotime($data));
-			$w = ($w - 1) % 7;
-			return $dni[ $w ];
-		}
+}
+
+if( !function_exists('sm_dzien_slowny') ) {
+	function sm_dzien_slowny( $data ){
+		$dni = array('Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela');
+		$w = (int) date('w', strtotime($data));
+		$w = ($w - 1) % 7;
+		return $dni[ $w ];
 	}
-?>
+}

@@ -1,8 +1,7 @@
 <?php
-
 class ep_PNA extends ep_Object{
 
-  public $_aliases = array('kody_pocztowe_miejsca');
+	public $_aliases = array('kody_pocztowe_miejsca');
 
 	/**
 	 * @var ep_Gmina
@@ -19,19 +18,11 @@ class ep_PNA extends ep_Object{
 	 */
 	protected $_wojewodztwo = null;
 
-
 	/**
 	 * @return string
 	 */
 	public function get_gmina_id(){
 		return (string) $this->data['gmina_id'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_id(){
-		return (string) $this->data['id'];
 	}
 
 	/**
@@ -98,6 +89,4 @@ class ep_PNA extends ep_Object{
 		}
 		return $this->_wojewodztwo;
 	}
-
-
 }
