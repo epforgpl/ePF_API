@@ -1,5 +1,4 @@
 <?php
-
 class ep_SN_Wspolsprawozdawca extends ep_Object{
 
 	public $_aliases = array( 'sn_wspolsprawozdawcy' );
@@ -13,14 +12,6 @@ class ep_SN_Wspolsprawozdawca extends ep_Object{
 	 * @var ep_SN_Osoba
 	 */
 	protected $_orzeczenie_sn_osoba = null;
-
-
-	/**
-	 * @return int
-	 */
-	public function get_id(){
-		return (int) $this->data['id'];
-	}
 
 	/**
 	 * @return int
@@ -55,6 +46,4 @@ class ep_SN_Wspolsprawozdawca extends ep_Object{
 		}
 		return $this->_orzeczenie_sn_osoba;
 	}
-
-
 }

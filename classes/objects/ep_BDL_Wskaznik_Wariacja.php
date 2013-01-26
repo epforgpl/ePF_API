@@ -1,29 +1,18 @@
 <?php
 class ep_BDL_Wskaznik_Wariacja extends ep_Object{
-  
-  public $_aliases = array('bdl_wskazniki_wariacje', 'bdl_wskazniki');
-  
-   
-   public $_podgrupa = null;
-   public $_wojewodztwa = null;
-   public $_powiaty	 = null;
-  
-	/**
-	 * @return int
-	 */
-	public function get_id(){
-		return (int)$this->data['id'];
-	}
-	
-	
-	
+
+	public $_aliases = array('bdl_wskazniki_wariacje', 'bdl_wskazniki');
+
+	public $_podgrupa = null;
+	public $_wojewodztwa = null;
+	public $_powiaty	 = null;
+
 	/**
 	 * @return int
 	 */
 	public function get_podgrupa_id(){
 		return (int)$this->data['podgrupa_id'];
 	}
-	
 
 	/**
 	 * @return string
@@ -33,60 +22,60 @@ class ep_BDL_Wskaznik_Wariacja extends ep_Object{
 	}
 
 	/**
-	 * @return string 
+	 * @return string
 	 */
 	public function get_imie(){
 		return (string)$this->data['imie'];
 	}
 
 	/**
-	 * @return int 
+	 * @return int
 	 */
 	public function get_nazwisko(){
 		return (string)$this->data['nazwisko'];
 	}
 
 	/**
-	 * @return int 
+	 * @return int
 	 */
 	public function get_zawod(){
 		return (string)$this->data['zawod'];
 	}
 
 	/**
-	 * @return int 
+	 * @return int
 	 */
 	public function get_plec(){
 		return (string)$this->data['plec'];
 	}
 
 	/**
-	 * @return int 
+	 * @return int
 	 */
 	public function get_data_urodzenia(){
 		return (string)$this->data['data_urodzenia'];
 	}
 
 	/**
-	 * @return int 
+	 * @return int
 	 */
 	public function get_miejsce_urodzenia(){
 		return (string)$this->data['miejsce_urodzenia'];
 	}
 	/**
-	 * @return int 
+	 * @return int
 	 */
 	public function get_nr_okregu(){
 		return (int)$this->data['nr_okregu'];
 	}
-	
+
 	/**
-	 * @return string 
+	 * @return string
 	 */
 	public function __toString(){
 		return $this->get_nazwa();
 	}
-	
+
 	/**
 	 * @return ep_BDL_Podgrupa
 	 */
@@ -104,7 +93,7 @@ class ep_BDL_Wskaznik_Wariacja extends ep_Object{
 		}
 		return $this->_wojewodztwa;
 	}
-	
+
 	public function powiaty(){
 		if( !$this->_powiaty ) {
 			$this->_powiaty = new ep_Dataset( 'powiaty' );
@@ -112,7 +101,7 @@ class ep_BDL_Wskaznik_Wariacja extends ep_Object{
 		}
 		return $this->_powiaty;
 	}
-	
+
 	public function gminy(){
 		if( !$this->_gminy ) {
 			$this->_gminy = new ep_Dataset( 'gminy' );
@@ -120,6 +109,4 @@ class ep_BDL_Wskaznik_Wariacja extends ep_Object{
 		}
 		return $this->_gminy;
 	}
-	
-	
 }

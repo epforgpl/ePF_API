@@ -1,5 +1,4 @@
 <?php
-
 class ep_SP_Orzeczenie_Czesc extends ep_Object{
 
 	public $_aliases = array( 'sp_orzeczenia_czesci' );
@@ -8,14 +7,6 @@ class ep_SP_Orzeczenie_Czesc extends ep_Object{
 	 * @var ep_SP_Orzeczenie
 	 */
 	protected $_orzeczenie_sp = null;
-
-
-	/**
-	 * @return int
-	 */
-	public function get_id(){
-		return (int) $this->data['id'];
-	}
 
 	/**
 	 * @return int
@@ -41,8 +32,6 @@ class ep_SP_Orzeczenie_Czesc extends ep_Object{
 			return (string) $this->data['wartosc'];
 		}
 	}
-		
-	
 
 	/**
 	 * @return string
@@ -60,6 +49,4 @@ class ep_SP_Orzeczenie_Czesc extends ep_Object{
 		}
 		return $this->_orzeczenie_sp;
 	}
-
-
 }

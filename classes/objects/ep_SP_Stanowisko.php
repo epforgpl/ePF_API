@@ -1,5 +1,4 @@
 <?php
-
 class ep_SP_Stanowisko extends ep_Object{
 
 	public $_aliases = array( 'sp_stanowiska' );
@@ -10,14 +9,6 @@ class ep_SP_Stanowisko extends ep_Object{
 	 * @var ep_Dataset
 	 */
 	protected $_orzeczenia_sp_osoby_stanowiska = null;
-
-
-	/**
-	 * @return int
-	 */
-	public function get_id(){
-		return (int) $this->data['id'];
-	}
 
 	/**
 	 * @return string
@@ -43,6 +34,4 @@ class ep_SP_Stanowisko extends ep_Object{
 		}
 		return $this->_orzeczenia_sp_osoby_stanowiska;
 	}
-
-
 }

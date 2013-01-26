@@ -1,5 +1,4 @@
 <?php
-
 class ep_SP_Osoba extends ep_Object{
 
 	public $_aliases = array( 'sp_ludzie' );
@@ -10,14 +9,6 @@ class ep_SP_Osoba extends ep_Object{
 	 * @var ep_Dataset
 	 */
 	protected $_stanowiska = null;
-
-
-	/**
-	 * @return int
-	 */
-	public function get_id(){
-		return (int) $this->data['id'];
-	}
 
 	/**
 	 * @return string
@@ -43,6 +34,4 @@ class ep_SP_Osoba extends ep_Object{
 		}
 		return $this->_stanowiska;
 	}
-
-
 }

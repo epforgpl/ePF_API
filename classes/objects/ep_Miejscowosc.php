@@ -1,5 +1,4 @@
 <?php
-
 class ep_Miejscowosc extends ep_Object{
 
 	public $_aliases = array( 'miejscowosci' );
@@ -19,19 +18,11 @@ class ep_Miejscowosc extends ep_Object{
 	 */
 	protected $_wojewodztwo = null;
 
-
 	/**
 	 * @return int
 	 */
 	public function get_gmina_id(){
 		return (int) $this->data['gmina_id'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_id(){
-		return (string) $this->data['id'];
 	}
 
 	/**
@@ -98,6 +89,4 @@ class ep_Miejscowosc extends ep_Object{
 		}
 		return $this->_wojewodztwo;
 	}
-
-
 }

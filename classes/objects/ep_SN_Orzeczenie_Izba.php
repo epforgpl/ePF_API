@@ -1,5 +1,4 @@
 <?php
-
 class ep_SN_Orzeczenie_Izba extends ep_Object{
 
 	public $_aliases = array( 'sn_izby-orzeczenia' );
@@ -13,14 +12,6 @@ class ep_SN_Orzeczenie_Izba extends ep_Object{
 	 * @var ep_SN_Izba
 	 */
 	protected $_orzeczenie_sn_izba = null;
-
-
-	/**
-	 * @return int
-	 */
-	public function get_id(){
-		return (int) $this->data['id'];
-	}
 
 	/**
 	 * @return int
@@ -55,6 +46,4 @@ class ep_SN_Orzeczenie_Izba extends ep_Object{
 		}
 		return $this->_orzeczenie_sn_izba;
 	}
-
-
 }
