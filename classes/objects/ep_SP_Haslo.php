@@ -1,6 +1,18 @@
 <?php
 class ep_SP_Haslo extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'orzeczenie_sp_haslo_tematyczne_id' => ep_Object::TYPE_INT,
+			'orzeczenie_sp_id' => ep_Object::TYPE_INT,
+		));
+		return $result;
+	}
+
 	public $_aliases = array( 'sp_orzeczenia_hasla' );
 
 	/**
@@ -12,20 +24,6 @@ class ep_SP_Haslo extends ep_Object{
 	 * @var ep_Orzeczenie_sp
 	 */
 	protected $_orzeczenie_sp = null;
-
-	/**
-	 * @return int
-	 */
-	public function get_orzeczenie_sp_haslo_tematyczne_id(){
-		return (int) $this->data['orzeczenie_sp_haslo_tematyczne_id'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_orzeczenie_sp_id(){
-		return (int) $this->data['orzeczenie_sp_id'];
-	}
 
 	/**
 	 * @return ep_SP_Haslo_Tematyczne

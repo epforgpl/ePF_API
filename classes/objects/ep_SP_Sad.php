@@ -1,6 +1,18 @@
 <?php
 class ep_SP_Sad extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'nazwa' => ep_Object::TYPE_STRING,
+			'dopelniacz' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
+
 	public $_aliases = array( 'sady_sp' );
 
 	public $_field_init_lookup = 'nazwa';
@@ -9,13 +21,6 @@ class ep_SP_Sad extends ep_Object{
 	 * @var ep_Dataset
 	 */
 	protected $_orzeczenia_sp = null;
-
-	/**
-	 * @return string
-	 */
-	public function get_nazwa(){
-		return (string) $this->data['nazwa'];
-	}
 
 	/**
 	 * @return string

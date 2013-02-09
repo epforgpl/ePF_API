@@ -1,6 +1,17 @@
 <?php
 class ep_Wojewodztwo extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'nazwa' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
+
 	public $_aliases = array('wojewodztwa');
 	public $_field_init_lookup = 'nazwa';
 
@@ -8,13 +19,6 @@ class ep_Wojewodztwo extends ep_Object{
 	 * @var ep_Area
 	 */
 	private $_obszar = null;
-
-	/**
-	 * @return string
-	 */
-	public function get_nazwa(){
-		return (string)$this->data['nazwa'];
-	}
 
 	/**
 	 * @return string

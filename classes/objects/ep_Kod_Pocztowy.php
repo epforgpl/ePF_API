@@ -1,6 +1,24 @@
 <?php
 class ep_Kod_Pocztowy extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'kod' => ep_Object::TYPE_STRING,
+			'kod_int' => ep_Object::TYPE_INT,
+			'wojewodztwo_id' => ep_Object::TYPE_INT,
+			'gminy' => ep_Object::TYPE_STRING,
+			'liczba_gmin' => ep_Object::TYPE_STRING,
+			'liczba_powiatow' => ep_Object::TYPE_STRING,
+			'miejscowosci_str' => ep_Object::TYPE_STRING,
+			'wojewodztwo' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
+
 	public $_aliases = array('kody_pocztowe');
 	public $_field_init_lookup = 'kod';
 
@@ -19,27 +37,6 @@ class ep_Kod_Pocztowy extends ep_Object{
 	 * @var ep_Wojewodztwo
 	 */
 	protected $_wojewodztwo = null;
-
-	/**
-	 * @return string
-	 */
-	public function get_kod(){
-		return (string) $this->data['kod'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_kod_int(){
-		return (int) $this->data['kod_int'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_wojewodztwo_id(){
-		return (int) $this->data['wojewodztwo_id'];
-	}
 
 	/**
 	 * @return ep_Wojewodztwo

@@ -1,6 +1,30 @@
 <?php
 class ep_Sejm_Interpelacja extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'adresaci_str' => ep_Object::TYPE_STRING,
+			'data_ogloszenia' => ep_Object::TYPE_STRING,
+			'data_status' => ep_Object::TYPE_STRING,
+			'data_wplywu' => ep_Object::TYPE_STRING,
+			'liczba_poslow' => ep_Object::TYPE_STRING,
+			'mowca_id' => ep_Object::TYPE_STRING,
+			'numer' => ep_Object::TYPE_STRING,
+			'ogloszenie_posiedzenie_id' => ep_Object::TYPE_STRING,
+			'poslowie_str' => ep_Object::TYPE_STRING,
+			'skrot' => ep_Object::TYPE_STRING,
+			'typ_id' => ep_Object::TYPE_STRING,
+			'typ_nazwa' => ep_Object::TYPE_STRING,
+			'tytul' => ep_Object::TYPE_STRING,
+			'tytul_skrocony' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
+
 	public $_aliases = array('sejm_interpelacje');
 	public $_field_init_lookup = 'numer';
 

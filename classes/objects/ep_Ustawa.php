@@ -1,6 +1,34 @@
 <?php
 class ep_Ustawa extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'dokument_id' => ep_Object::TYPE_STRING,
+			'isip_plik_typ_id' => ep_Object::TYPE_STRING,
+			'dzial_id' => ep_Object::TYPE_STRING,
+			'autor_id' => ep_Object::TYPE_STRING,
+			'data_publikacji' => ep_Object::TYPE_STRING,
+			'data_wejscia_w_zycie' => ep_Object::TYPE_STRING,
+			'data_wydania' => ep_Object::TYPE_STRING,
+			'isap_data_uchylenia' => ep_Object::TYPE_STRING,
+			'isap_data_wygasniecia' => ep_Object::TYPE_STRING,
+			'isap_id' => ep_Object::TYPE_STRING,
+			'isap_uwagi_str' => ep_Object::TYPE_STRING,
+			'status_id' => ep_Object::TYPE_STRING,
+			'sygnatura' => ep_Object::TYPE_STRING,
+			'typ_id' => ep_Object::TYPE_STRING,
+			'typ_nazwa' => ep_Object::TYPE_STRING,
+			'tytul' => ep_Object::TYPE_STRING,
+			'tytul_skrocony' => ep_Object::TYPE_STRING,
+			'zrodlo' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
+
 	public $_aliases = array('ustawy','prawo_typy','isap_pliki');
 	// public $_field_init_lookup = 'tytul';
 	private $_prawo = false;

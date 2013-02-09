@@ -4,24 +4,24 @@
 
 class ep_Senat_senator_zespol_senacki extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'zespol_senacki_id' => ep_Object::TYPE_INT,
+			'senator_id' => ep_Object::TYPE_INT,
+			'data_do' => ep_Object::TYPE_STRING,
+			'data_od' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
+
 	public $_aliases = array('senat_senatorowie_zespoly_senackie');
 
 	private $_zespol_senacki = false;
 	private $_senator = false;
-
-	/**
-	 * @return int
-	 */
-	public function get_zespol_senacki_id(){
-		return (int)$this->data['zespol_senacki_id'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_senator_id(){
-		return (int)$this->data['senator_id'];
-	}
 
 	/**
 	 * @return string

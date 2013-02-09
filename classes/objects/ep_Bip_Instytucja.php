@@ -1,14 +1,18 @@
 <?php
 class ep_Bip_Instytucja extends ep_Object{
 
-	public $_aliases = array( 'bip_instytucje' );
-
 	/**
-	 * @return string
+	 * @see ep_Object::getDataStruct()
 	 */
-	public function get_nazwa(){
-		return (string) $this->data['nazwa'];
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'nazwa' => ep_Object::TYPE_STRING,
+		));
+		return $result;
 	}
+
+	public $_aliases = array( 'bip_instytucje' );
 
 	/**
 	 * @return string
