@@ -1,5 +1,5 @@
 <?php
-class ep_NIK_raport extends ep_Object{
+class ep_NIK_Raport extends ep_Object{
 
 	public $_aliases = array('nik_raporty');
 	public $_field_init_lookup = 'numer';
