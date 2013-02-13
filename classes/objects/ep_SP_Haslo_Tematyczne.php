@@ -1,6 +1,17 @@
 <?php
 class ep_SP_Haslo_Tematyczne extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'nazwa' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
+
 	public $_aliases = array( 'sp_orzeczenia_hasla_tematyczne' );
 
 	public $_field_init_lookup = 'nazwa';
@@ -9,13 +20,6 @@ class ep_SP_Haslo_Tematyczne extends ep_Object{
 	 * @var ep_Dataset
 	 */
 	protected $_orzeczenia_sp_hasla = null;
-
-	/**
-	 * @return string
-	 */
-	public function get_nazwa(){
-		return (string) $this->data['nazwa'];
-	}
 
 	/**
 	 * @return string

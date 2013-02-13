@@ -36,47 +36,59 @@ class ep_Autoloader {
 	}
 	
 	/**
-	 * Generate and output classmap for autoloader
+	 * @param string $dir directory path to generate class map from
+	 * @return array:array list of 3 associative arrays containing all mappings, correct mappings and bad files respectively
+	 */
+	private function getClassMap($dir) {
+		$flags = RecursiveDirectoryIterator::KEY_AS_FILENAME 
+			| RecursiveDirectoryIterator::SKIP_DOTS 
+			| RecursiveDirectoryIterator::UNIX_PATHS;
+		$files = new RecursiveDirectoryIterator($dir, $flags);
+		$files = new RecursiveIteratorIterator($files, RecursiveIteratorIterator::LEAVES_ONLY);
+		
+		//use only *.php files (eg. for filter .dot.files)
+		$files = new RegexIterator($files, '/^.+\.php$/i', RegexIterator::MATCH);
+		
+		//use class name (without .php extension) as key
+		$files = new RegexIterator($files, '/(\.php)$/i', RegexIterator::REPLACE, RegexIterator::USE_KEY);
+		$files->rewind();
+		
+		$map = array();
+		$map_correct = array();
+		$regExp = '/class\s+([a-zA-Z0-9_]*)\s/i';
+		
+		//iterate over files
+		foreach ($files as $key => $fileInfo) {
+			$map[$key] = $files->getSubPathName();
+				
+			$file = new SplFileObject($fileInfo->getRealPath());
+			$m = new RegexIterator($file, $regExp, RegexIterator::MATCH);
+			$class_matches = iterator_to_array($m, false);
+
+			if (empty($class_matches)) {
+				trigger_error("No class found in file ". $fileInfo->getRealPath(), E_USER_WARNING);
+			} else {
+				$map_correct[$key] = $map[$key];
+			}
+		}
+		//error's map
+		$map_invalid = array_diff($map, $map_correct);
+		
+		return array($map, $map_correct, $map_invalid);
+	}
+	
+	/**
+	 * Generate and output (SPL'ish) classmap for autoloader
+	 *
 	 * @param bool $return If true, returns PHP code instead of outputting it. Default: false
 	 * @return string
 	 */
 	public function regenerateClassMap($return = false) {
-		$base = __DIR__;
-		$result = array();
-		$files = scandir($base);
-		foreach ($files as $file) {
-			if ($file[0]=='.') {
-				continue;
-			}
-			$path = $base.'/'.$file;
-			if (is_dir($path)) {
-				$subFiles = scandir($path);
-				foreach ($subFiles as $subFile) {
-					if ($subFile[0]=='.') {
-						continue;
-					}
-					$path2 = $file.'/'.$subFile;
-					$result[] = $path2;
-				}
-			} else {
-				$result[] = $file;
-			}
-		}
-		$map = array();
-		foreach ($result as $path) {
-			$lines = file($base.'/'.$path);
-			$i = 0;
-			$regExp = '/class\s+([a-zA-Z0-9_]*)\s/i';
-			while (!preg_match($regExp, $lines[$i], $matches)) {
-				$i++;
-			}
-			if (preg_match($regExp, $lines[$i], $matches)) {
-				$map[$matches[1]] = $path;
-			} else {
-				trigger_error("No class found in file ".$path, E_USER_WARNING);
-			}
-		}
-		$result = 'return '.str_replace('  ', "\t", var_export($map, true)).';';
+		
+		list($map_all, $map_oks, $map_bad) = $this->getClassMap(__DIR__);
+		
+		$result = 'return '.str_replace('  ', "\t", var_export($map_oks, true)).';';
+		
 		if ($return) {
 			return $result;
 		} else {
@@ -84,6 +96,33 @@ class ep_Autoloader {
 			echo $result;
 			echo '</pre>';
 		}
+	}
+	
+	/**
+	 * @return array full paths to files containing object classes
+	 */
+	public function getAllObjectClassPaths() {
+		$basePath = dirname(__FILE__).'/objects/';
+		$files = scandir($basePath);
+		foreach ($files as $key => $file) {
+			if ($file[0]=='.' || !is_file($basePath.$file)) {
+				unset($files[$key]);
+			} else {
+				$files[$key] = $basePath.$file;
+			}
+		}
+		return $files;
+	}
+	
+	/**
+	 * @return array all object classes names
+	 */
+	public function getAllObjectClassNames() {
+		$files = $this->getAllObjectClassPaths();
+		foreach ($files as $key => $file) {
+			$files[$key] = basename($file, '.php');
+		}
+		return $files;
 	}
 	
 	/**
@@ -97,7 +136,11 @@ class ep_Autoloader {
 				return false;
 			}
 		} else {
-			if (!@include_once('objects/'.$class.'.php')) {
+			$path = dirname(__FILE__).'/objects/'.$class.'.php';
+			if (!file_exists($path)) {
+				return false;
+			}
+			if (!@include_once($path)) {
 				return false;
 			}
 		}

@@ -1,6 +1,21 @@
 <?php
 class ep_Miejscowosc extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'gmina_id' => ep_Object::TYPE_INT,
+			'nazwa' => ep_Object::TYPE_STRING,
+			'nazwa_gminy' => ep_Object::TYPE_STRING,
+			'powiat_id' => ep_Object::TYPE_INT,
+			'wojewodztwo_id' => ep_Object::TYPE_INT,
+		));
+		return $result;
+	}
+
 	public $_aliases = array( 'miejscowosci' );
 
 	/**
@@ -17,41 +32,6 @@ class ep_Miejscowosc extends ep_Object{
 	 * @var ep_Wojewodztwo
 	 */
 	protected $_wojewodztwo = null;
-
-	/**
-	 * @return int
-	 */
-	public function get_gmina_id(){
-		return (int) $this->data['gmina_id'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_nazwa(){
-		return (string) $this->data['nazwa'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_nazwa_gminy(){
-		return (string) $this->data['nazwa_gminy'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_powiat_id(){
-		return (int) $this->data['powiat_id'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_wojewodztwo_id(){
-		return (int) $this->data['wojewodztwo_id'];
-	}
 
 	/**
 	 * @return string

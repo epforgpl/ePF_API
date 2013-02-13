@@ -1,6 +1,17 @@
 <?php
 class ep_Czlowiek extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			//FIXME missing definition
+		));
+		return $result;
+	}
+
 	public $_aliases = array('ludzie');
 	public $_field_init_lookup = 'nazwa';
 	private $_stanowiska = false;

@@ -26,6 +26,7 @@ class ep_Api {
 
 		$request_url = $this->server_address . $service;
 
+		$mt = microtime(true);
 		$data = '';
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $request_url );
@@ -36,19 +37,35 @@ class ep_Api {
 
 		$this->http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		curl_close($ch);
-
+		$requestTime = microtime(true) - $mt;
+		
 		switch( $this->http_code ) {
 
 			case '401': {
 				throw new Exception('Brak kluczy eP_API. Zarejestruj konto na portalu http://sejmometr.pl i pobierz swoje prywatne klucze.');
+				break;
 			}
 
 			case '402': {
 				throw new Exception('Przekroczony limit żądań (3000 żądań na dobę).');
+				break;
 			}
 
 			case '200': {
-				return json_decode( $data, true );
+				$result = json_decode( $data, true );
+				if ($result===null) {
+					throw new Exception('Niepoprawna odpowiedź serwera: '.$data);
+				}
+				if (isset($result['performance'])) {
+					$result['performance']['client_total'] = $requestTime;
+				}
+				return $result;
+				break;
+			}
+			
+			default: {
+				throw new Exception('Błąd wewnętrzny: Nieoczekiwana odpowiedź serwera '.$this->http_code);
+				break;
 			}
 		}
 

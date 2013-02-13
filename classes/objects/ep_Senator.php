@@ -1,6 +1,20 @@
 <?php
 class ep_Senator extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'mowca_id' => ep_Object::TYPE_INT,
+			'nazwa' => ep_Object::TYPE_STRING,
+			'email' => ep_Object::TYPE_STRING,
+			'opis' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
+
 	public $_aliases = array('senatorowie');
 	public $_field_init_lookup = 'nazwa';
 
@@ -10,20 +24,6 @@ class ep_Senator extends ep_Object{
 	private $_oswiadczenia_majatkowe = false;
 	private $_rejestr_korzysci = false;
 	private $_wystapienia = false;
-
-	/**
-	 * @return int
-	 */
-	public function get_mowca_id(){
-		return (int)$this->data['mowca_id'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_nazwa(){
-		return (string)$this->data['nazwa'];
-	}
 
 	/**
 	 * @return string
