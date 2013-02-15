@@ -3,7 +3,7 @@ class ep_Posel_Komisja_Stanowisko extends ep_Object{
 
 	public $_aliases = array('poslowie_komisje_stanowiska', 'sejm_komisje_stanowiska');
 	private $_komisja = false;
-	private $_posel = fasle;
+	private $_posel = false;
 
 	public function set_ep_poslowie($data){
 		$this->_posel = new ep_Posel($data);
