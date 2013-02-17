@@ -1,11 +1,37 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Klasa (A) ep_Object - podstawowy składnik biblioteki.
+ *
+ * Odpowiada za struktury danych obiektów.
+ *
+ * @category   API
+ * @package    ePF_API
+ * @subpackage Core
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ * @abstract
+ */
 abstract class ep_Object extends ep_Api {
 
 	public $id;
 	public $data;
 	private $loaded;
 	public $layers = array();
-
+	
+	const TYPE_INT = 'int';
+	const TYPE_STRING = 'string';
+	const TYPE_ARRAY = 'array';
+	const TYPE_FLOAT = 'float';
+	const TYPE_OBJECT = 'object';
+	const TYPE_BOOLEAN = 'boolean';
+	const TYPE_METHOD = 'method';
+	
 	public function __construct( $data, $complex = true ){
 		//echo get_class( $this ) . " create\n";
 		//var_dump( $data );
@@ -26,7 +52,7 @@ abstract class ep_Object extends ep_Api {
 					break;
 				}
 			}
-		} elseif( $this->_field_init_lookup && is_string( $data ) && !is_numeric( $data ) ) {
+		} elseif( isset($this->_field_init_lookup) && $this->_field_init_lookup && is_string( $data ) && !is_numeric( $data ) ) {
 
 			// echo '-2<br/>';
 
@@ -57,6 +83,60 @@ abstract class ep_Object extends ep_Api {
 				$this->loaded = true;
 			}
 		}
+	}
+	
+	/**
+	 * @return array of definitions of fields in data field. Array keys are names and values are constants from ep_Object::TYPE_*. All defined fields are availible by get_{NAME} getter methods and should be read this way.  
+	 */
+	public function getDataStruct() {
+		return array(
+			'id' => ep_Object::TYPE_INT,
+		);
+	}
+
+	/**
+	 * Implements get_* getters for trivial cases. Complex cases should be handled by direct method implementation.
+	 * @param string $name
+	 * @param array $arguments
+	 * @throws BadMethodCallException
+	 * @throws UnexpectedValueException
+	 */
+	private function __call($name , $arguments) {
+		//handle get_{NAME} methods for $this->data['{NAME}'] contents
+		if (strpos($name, 'get_')===0) {
+			$struct = $this->getDataStruct();
+			$key = substr($name, 4);
+			if (isset($struct[$key])) {
+				$val = $this->data[$key];
+				switch($struct[$key]) {
+					case ep_Object::TYPE_ARRAY:
+						return (array) $val;
+						break;
+					case ep_Object::TYPE_BOOLEAN:
+						return (bool) $val;
+						break;
+					case ep_Object::TYPE_FLOAT:
+						return (float) $val;
+						break;
+					case ep_Object::TYPE_INT:
+						return (int) $val;
+						break;
+					case ep_Object::TYPE_OBJECT:
+						return (object) $val;
+						break;
+					case ep_Object::TYPE_STRING:
+						return (string) $val;
+						break;
+					case ep_Object::TYPE_METHOD:
+						throw new BadMethodCallException("Missing method $name definition in class ".get_class($this));
+						break;
+					default:
+						throw new UnexpectedValueException("Internal Error: Bad field definition in class ".get_class($this).' for data name '.$key);
+						break;
+				}
+			}
+		}
+		throw new BadMethodCallException("Unable to call method ".get_class($this)."::$name");
 	}
 
 	function load(){
@@ -158,12 +238,5 @@ abstract class ep_Object extends ep_Api {
 
 	public function getDescription(){
 		return false;
-	}
-	
-	/**
-	 * @return int
-	 */
-	public function get_id(){
-		return (int) $this->data['id'];
 	}
 }

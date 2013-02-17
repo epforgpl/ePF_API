@@ -1,27 +1,55 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Obiekt ep_Senat_senator_zespol_parlamentarny.
+ *
+ * Aliasy:
+ *   senat_senatorowie_zespoly_parlamentarne
+ *
+ * Przykładowe zastosowanie:
+ * <code>
+ *   $dataset = new ep_Dataset('senat_senatorowie_zespoly_parlamentarne');
+ *   $data = $dataset->find_all();
+ * </code>
+ * @example objects/ep_Senat_senator_zespol_parlamentarny
+ *
+ * @see ep_Senat_senator_zespol_parlamentarny::$_aliases
+ *
+ * @category   System
+ * @package    ePF_API
+ * @subpackage Objects
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
+
 //ep_Senat_senator_zespol_parlamentarny
 //senat_senatorowie_zespoly_parlamentarne
 
 class ep_Senat_senator_zespol_parlamentarny extends ep_Object{
 
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'zespol_parlamentarny_id' => ep_Object::TYPE_INT,
+			'senator_id' => ep_Object::TYPE_INT,
+			'data_do' => ep_Object::TYPE_STRING,
+			'data_od' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
+
 	public $_aliases = array('senat_senatorowie_zespoly_parlamentarne');
 
 	private $_zespol_parlamentarny = false;
 	private $_senator = false;
-
-	/**
-	 * @return int
-	 */
-	public function get_zespol_parlamentarny_id(){
-		return (int)$this->data['zespol_parlamentarny_id'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_senator_id(){
-		return (int)$this->data['senator_id'];
-	}
 
 	/**
 	 * @return string

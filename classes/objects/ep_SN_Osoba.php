@@ -1,5 +1,43 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Obiekt ep_SN_Osoba.
+ *
+ * Aliasy:
+ *   sn_ludzie
+ *
+ * Przykładowe zastosowanie:
+ * <code>
+ *   $dataset = new ep_Dataset('sn_ludzie');
+ *   $data = $dataset->find_all();
+ * </code>
+ * @example objects/ep_SN_Osoba
+ *
+ * @see ep_SN_Osoba::$_aliases
+ *
+ * @category   System
+ * @package    ePF_API
+ * @subpackage Objects
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_SN_Osoba extends ep_Object{
+
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'nazwa' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
 
 	public $_aliases = array( 'sn_ludzie' );
 
@@ -24,13 +62,6 @@ class ep_SN_Osoba extends ep_Object{
 	 * @var ep_Dataset
 	 */
 	protected $_orzeczenia_sn_wspolsprawozdawcy = null;
-
-	/**
-	 * @return string
-	 */
-	public function get_nazwa(){
-		return (string) $this->data['nazwa'];
-	}
 
 	/**
 	 * @return string

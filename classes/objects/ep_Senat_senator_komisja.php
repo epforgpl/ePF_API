@@ -1,24 +1,52 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Obiekt ep_Senat_senator_komisja.
+ *
+ * Aliasy:
+ *   senat_senatorowie_komisje
+ *
+ * Przykładowe zastosowanie:
+ * <code>
+ *   $dataset = new ep_Dataset('senat_senatorowie_komisje');
+ *   $data = $dataset->find_all();
+ * </code>
+ * @example objects/ep_Senat_senator_komisja
+ *
+ * @see ep_Senat_senator_komisja::$_aliases
+ *
+ * @category   System
+ * @package    ePF_API
+ * @subpackage Objects
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_Senat_senator_komisja extends ep_Object{
+
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'komisja_id' => ep_Object::TYPE_INT,
+			'senator_id' => ep_Object::TYPE_INT,
+			'stanowisko' => ep_Object::TYPE_METHOD,
+			'data_do' => ep_Object::TYPE_STRING,
+			'data_od' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
 
 	public $_aliases = array('senat_senatorowie_komisje');
 
 	private $_komisja = false;
 	private $_senator = false;
-
-	/**
-	 * @return int
-	 */
-	public function get_komisja_id(){
-		return (int)$this->data['komisja_id'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_senator_id(){
-		return (int)$this->data['senator_id'];
-	}
 
 	/**
 	 * @return string

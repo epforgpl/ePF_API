@@ -1,5 +1,57 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Obiekt ep_SN_Orzeczenie.
+ *
+ * Aliasy:
+ *   sn_orzeczenia
+ *
+ * Przykładowe zastosowanie:
+ * <code>
+ *   $dataset = new ep_Dataset('sn_orzeczenia');
+ *   $data = $dataset->find_all();
+ * </code>
+ * @example objects/ep_SN_Orzeczenie
+ *
+ * @see ep_SN_Orzeczenie::$_aliases
+ *
+ * @category   System
+ * @package    ePF_API
+ * @subpackage Objects
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_SN_Orzeczenie extends ep_Object{
+
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'akcept' => ep_Object::TYPE_STRING,
+			'data' => ep_Object::TYPE_STRING,
+			'dokument_id' => ep_Object::TYPE_STRING,
+			'forma' => ep_Object::TYPE_STRING,
+			'item_id' => ep_Object::TYPE_INT,
+			'izby_str' => ep_Object::TYPE_STRING,
+			'jednostka_str' => ep_Object::TYPE_STRING,
+			'orzeczenie_sn_forma_id' => ep_Object::TYPE_INT,
+			'orzeczenie_sn_jednostka_id' => ep_Object::TYPE_INT,
+			'orzeczenie_sn_sklad_id' => ep_Object::TYPE_INT,
+			'przewodniczacy' => ep_Object::TYPE_STRING,
+			'przewodniczacy_id' => ep_Object::TYPE_INT,
+			'sprawozdawcy_str' => ep_Object::TYPE_STRING,
+			'sygnatura' => ep_Object::TYPE_STRING,
+			'wspolsprawozdawcy_str' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
 
 	public $_aliases = array( 'sn_orzeczenia' );
 
@@ -44,111 +96,6 @@ class ep_SN_Orzeczenie extends ep_Object{
 	 * @var ep_Dataset
 	 */
 	protected $_wspolsprawozdawcy = null;
-
-	/**
-	 * @return string
-	 */
-	public function get_akcept(){
-		return (string) $this->data['akcept'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_data(){
-		return (string) $this->data['data'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_dokument_id(){
-		return (string) $this->data['dokument_id'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_forma(){
-		return (string) $this->data['forma'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_item_id(){
-		return (int) $this->data['item_id'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_izby_str(){
-		return (string) $this->data['izby_str'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_jednostka_str(){
-		return (string) $this->data['jednostka_str'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_orzeczenie_sn_forma_id(){
-		return (int) $this->data['orzeczenie_sn_forma_id'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_orzeczenie_sn_jednostka_id(){
-		return (int) $this->data['orzeczenie_sn_jednostka_id'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_orzeczenie_sn_sklad_id(){
-		return (int) $this->data['orzeczenie_sn_sklad_id'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_przewodniczacy(){
-		return (string) $this->data['przewodniczacy'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_przewodniczacy_id(){
-		return (int) $this->data['przewodniczacy_id'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_sprawozdawcy_str(){
-		return (string) $this->data['sprawozdawcy_str'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_sygnatura(){
-		return (string) $this->data['sygnatura'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_wspolsprawozdawcy_str(){
-		return (string) $this->data['wspolsprawozdawcy_str'];
-	}
 
 	/**
 	 * @return string

@@ -1,5 +1,56 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Obiekt ep_SP_Orzeczenie.
+ *
+ * Aliasy:
+ *   sp_orzeczenia
+ *   sady_sp
+ *
+ * Przykładowe zastosowanie:
+ * <code>
+ *   $dataset = new ep_Dataset('sp_orzeczenia');
+ *   $data = $dataset->find_all();
+ * </code>
+ * @example objects/ep_SP_Orzeczenie
+ *
+ * @see ep_SP_Orzeczenie::$_aliases
+ *
+ * @category   System
+ * @package    ePF_API
+ * @subpackage Objects
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_SP_Orzeczenie extends ep_Object{
+
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'akcept' => ep_Object::TYPE_INT,
+			'data' => ep_Object::TYPE_STRING,
+			'hasla_tematyczne' => ep_Object::TYPE_STRING,
+			'podstawa_prawna' => ep_Object::TYPE_STRING,
+			'sad_sp_id' => ep_Object::TYPE_INT,
+			'sad' => ep_Object::TYPE_STRING,
+			'str_ident' => ep_Object::TYPE_STRING,
+			'sygnatura' => ep_Object::TYPE_STRING,
+			'teza' => ep_Object::TYPE_STRING,
+			'typ' => ep_Object::TYPE_STRING,
+			'typ_id' => ep_Object::TYPE_INT,
+			'wydzial' => ep_Object::TYPE_STRING,
+			'dopelniacz' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
 
 	public $_aliases = array( 'sp_orzeczenia', 'sady_sp' );
 
@@ -27,90 +78,6 @@ class ep_SP_Orzeczenie extends ep_Object{
 	 * @var ep_Dataset
 	 */
 	protected $_przepisy = null;
-
-	/**
-	 * @return int
-	 */
-	public function get_akcept(){
-		return (int) $this->data['akcept'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_data(){
-		return (string) $this->data['data'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_hasla_tematyczne(){
-		return (string) $this->data['hasla_tematyczne'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_podstawa_prawna(){
-		return (string) $this->data['podstawa_prawna'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_sad_sp_id(){
-		return (int) $this->data['sad_sp_id'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_sad(){
-		return (string) $this->data['sad'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_str_ident(){
-		return (string) $this->data['str_ident'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_sygnatura(){
-		return (string) $this->data['sygnatura'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_teza(){
-		return (string) $this->data['teza'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_typ(){
-		return (string) $this->data['typ'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_typ_id(){
-		return (int) $this->data['typ_id'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_wydzial(){
-		return (string) $this->data['wydzial'];
-	}
 
 	/**
 	 * @return string
