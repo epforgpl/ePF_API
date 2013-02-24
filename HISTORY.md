@@ -1,6 +1,13 @@
 
-ePF_API - historia
-==================
+ePF_API - Historia i dzień dzisiejszy
+=====================================
+
+ePF_API 0.2.0 / 2013.02.15
+--------------------------
+- zmiany w kodzie (Paweł Sroka 'Srokap' https://github.com/Srokap):
+    * implementacja (__call) get_* getters dla typów trywialnych
+- dokumentacja (Weronika Kami 'veriKami' https://github.com/veriKami):
+    * pierwsza "automatyczna" wersja
 
 ePF_API 0.1.1 / 2013.02.05
 --------------------------

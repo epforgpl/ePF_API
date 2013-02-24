@@ -1,5 +1,47 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Obiekt ep_Glosowanie_Sejmowe_Glos.
+ *
+ * Aliasy:
+ *   sejm_glosowania_glosy_wyniki
+ *
+ * Przykładowe zastosowanie:
+ * <code>
+ *   $dataset = new ep_Dataset('sejm_glosowania_glosy_wyniki');
+ *   $data = $dataset->find_all();
+ * </code>
+ * @example objects/ep_Glosowanie_Sejmowe_Glos
+ *
+ * @see ep_Glosowanie_Sejmowe_Glos::$_aliases
+ *
+ * @category   System
+ * @package    ePF_API
+ * @subpackage Objects
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_Glosowanie_Sejmowe_Glos extends ep_Object{
+
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'bunt' => ep_Object::TYPE_STRING,
+			'glosowanie_id' => ep_Object::TYPE_STRING,
+			'glos_id' => ep_Object::TYPE_STRING,
+			'klub_id' => ep_Object::TYPE_STRING,
+			'posel_id' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
 
 	public $_aliases = array('sejm_glosowania_glosy_wyniki');
 	private $_posel = false;
@@ -10,61 +52,6 @@ class ep_Glosowanie_Sejmowe_Glos extends ep_Object{
 
 	public function posel(){
 		return $this->_posel;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_nazwa(){
-		return (string)$this->data['nazwa'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_imie(){
-		return (string)$this->data['imie'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_nazwisko(){
-		return (string)$this->data['nazwisko'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_zawod(){
-		return (string)$this->data['zawod'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_plec(){
-		return (string)$this->data['plec'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_data_urodzenia(){
-		return (string)$this->data['data_urodzenia'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_miejsce_urodzenia(){
-		return (string)$this->data['miejsce_urodzenia'];
-	}
-	/**
-	 * @return int
-	 */
-	public function get_nr_okregu(){
-		return (int)$this->data['nr_okregu'];
 	}
 
 	/**

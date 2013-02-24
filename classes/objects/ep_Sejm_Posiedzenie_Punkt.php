@@ -1,5 +1,54 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Obiekt ep_Sejm_Posiedzenie_Punkt.
+ *
+ * Aliasy:
+ *   sejm_posiedzenia_punkty
+ *
+ * Przykładowe zastosowanie:
+ * <code>
+ *   $dataset = new ep_Dataset('sejm_posiedzenia_punkty');
+ *   $data = $dataset->find_all();
+ * </code>
+ * @example objects/ep_Sejm_Posiedzenie_Punkt
+ *
+ * @see ep_Sejm_Posiedzenie_Punkt::$_aliases
+ *
+ * @category   System
+ * @package    ePF_API
+ * @subpackage Objects
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_Sejm_Posiedzenie_Punkt extends ep_Object{
+
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'kolejnosc' => ep_Object::TYPE_STRING,
+			'liczba_debat' => ep_Object::TYPE_STRING,
+			'liczba_glosowan' => ep_Object::TYPE_STRING,
+			'liczba_slow' => ep_Object::TYPE_STRING,
+			'liczba_wystapien' => ep_Object::TYPE_STRING,
+			'numer' => ep_Object::TYPE_STRING,
+			'numer_int' => ep_Object::TYPE_STRING,
+			'posiedzenie_id' => ep_Object::TYPE_STRING,
+			'promo_wystapienie_id' => ep_Object::TYPE_STRING,
+			'stats_str' => ep_Object::TYPE_STRING,
+			'tytul' => ep_Object::TYPE_STRING,
+			'video' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
 
 	public $_aliases = array('sejm_posiedzenia_punkty');
 
@@ -47,61 +96,6 @@ class ep_Sejm_Posiedzenie_Punkt extends ep_Object{
 			$this->_druki->init_where('sejm_posiedzenia_punkty.id', '=', $this->data['id']);
 		}
 		return $this->_druki;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_nazwa(){
-		return (string)$this->data['nazwa'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_imie(){
-		return (string)$this->data['imie'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_nazwisko(){
-		return (string)$this->data['nazwisko'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_zawod(){
-		return (string)$this->data['zawod'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_plec(){
-		return (string)$this->data['plec'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_data_urodzenia(){
-		return (string)$this->data['data_urodzenia'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_miejsce_urodzenia(){
-		return (string)$this->data['miejsce_urodzenia'];
-	}
-	/**
-	 * @return int
-	 */
-	public function get_nr_okregu(){
-		return (int)$this->data['nr_okregu'];
 	}
 
 	/**

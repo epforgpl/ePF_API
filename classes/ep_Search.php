@@ -1,4 +1,21 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Klasa ep_Search - podstawowy składnik biblioteki.
+ *
+ * Odpowiada za konstrukcję zapytań bazodanowych.
+ *
+ * @category   API
+ * @package    ePF_API
+ * @subpackage Core
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_Search extends ep_Api {
 
 	public $q;

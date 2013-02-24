@@ -1,6 +1,9 @@
 ePF_API - Dane publiczne dostępne jak nigdy wcześniej!
 ------------------------------------------------------
 
+Master: [![Build Status](https://api.travis-ci.org/Srokap/ePF_API.png?branch=master)](https://travis-ci.org/Srokap/ePF_API)
+Develop: [![Build Status](https://api.travis-ci.org/Srokap/ePF_API.png?branch=develop)](https://travis-ci.org/Srokap/ePF_API)
+
 To jest oficjalny klient platformy ePF_API. Umożliwia pobieranie danych publicznych, udostępnianych na portalu http://sejmometr.pl.
 Zobacz więcej informacji o platformie ePF_API na stronie http://sejmometr.pl/api.
 Dokumentacja klienta jest dostępna pod adresem http://sejmometr.pl/api/docs.

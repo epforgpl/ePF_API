@@ -1,5 +1,43 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Obiekt ep_Orzeczenie_sp_osoba_stanowisko.
+ *
+ * Aliasy:
+ *   sp_ludzie_stanowiska
+ *
+ * Przykładowe zastosowanie:
+ * <code>
+ *   $dataset = new ep_Dataset('sp_ludzie_stanowiska');
+ *   $data = $dataset->find_all();
+ * </code>
+ * @example objects/ep_Orzeczenie_sp_osoba_stanowisko
+ *
+ * @see ep_Orzeczenie_sp_osoba_stanowisko::$_aliases
+ *
+ * @category   System
+ * @package    ePF_API
+ * @subpackage Objects
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_Orzeczenie_sp_osoba_stanowisko extends ep_Object{
+
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			//FIXME missing definition
+		));
+		return $result;
+	}
 
 	public $_aliases = array( 'sp_ludzie_stanowiska' );
 
@@ -17,27 +55,6 @@ class ep_Orzeczenie_sp_osoba_stanowisko extends ep_Object{
 	 * @var ep_SP_Stanowisko
 	 */
 	protected $_orzeczenie_sp_stanowisko = null;
-
-	/**
-	 * @return int
-	 */
-	public function get_orzeczenie_sp_id(){
-		return (int) $this->data['orzeczenie_sp_id'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_orzeczenie_sp_osoba_id(){
-		return (int) $this->data['orzeczenie_sp_osoba_id'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_orzeczenie_sp_stanowisko_id(){
-		return (int) $this->data['orzeczenie_sp_stanowisko_id'];
-	}
 
 	/**
 	 * @return ep_SP_Orzeczenie

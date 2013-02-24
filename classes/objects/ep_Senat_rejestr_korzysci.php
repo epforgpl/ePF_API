@@ -1,6 +1,45 @@
 <?php
-//
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Obiekt ep_Senat_rejestr_korzysci.
+ *
+ * Aliasy:
+ *   senat_rejestr_korzysci
+ *
+ * Przykładowe zastosowanie:
+ * <code>
+ *   $dataset = new ep_Dataset('senat_rejestr_korzysci');
+ *   $data = $dataset->find_all();
+ * </code>
+ * @example objects/ep_Senat_rejestr_korzysci
+ *
+ * @see ep_Senat_rejestr_korzysci::$_aliases
+ *
+ * @category   System
+ * @package    ePF_API
+ * @subpackage Objects
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_Senat_rejestr_korzysci extends ep_Object{
+
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'dokument_id' => ep_Object::TYPE_INT,
+			'nazwa' => ep_Object::TYPE_STRING,
+			'senator_id' => ep_Object::TYPE_STRING,
+		));
+		return $result;
+	}
 
 	public $_aliases = array('senat_rejestr_korzysci');
 	public $_field_init_lookup = 'nazwa';
@@ -13,27 +52,6 @@ class ep_Senat_rejestr_korzysci extends ep_Object{
 
 	public function senator(){
 		return $this->_senator;
-	}
-
-	/**
-	 * @return integer
-	 */
-	public function get_dokument_id(){
-		return (int) $this->data['dokument_id'];
-	}
-
-	/**
-	 * @return integer
-	 */
-	public function get_posel_id(){
-		return (int) $this->data['senator_id'];
-	}
-
-	/**
-	 * @return string
-	 */
-	public function get_nazwa(){
-		return (string) $this->data['nazwa'];
 	}
 
 	public function __toString(){

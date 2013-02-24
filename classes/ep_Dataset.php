@@ -1,4 +1,21 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Klasa ep_Dataset - podstawowy składnik biblioteki.
+ *
+ * Odpowiada za konstrukcję zapytań bazodanowych.
+ *
+ * @category   API
+ * @package    ePF_API
+ * @subpackage Core
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_Dataset extends ep_Api {
 
 	public $name;
@@ -165,6 +182,9 @@ class ep_Dataset extends ep_Api {
 
 	public function find_one($return_objects=true){
 		$data = $this->find_all( 1, 0, $return_objects );
+		if (!is_array($data)) {
+			return false;
+		}
 		return array_shift($data);
 	}
 

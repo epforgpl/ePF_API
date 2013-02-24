@@ -1,5 +1,44 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Obiekt ep_SP_Haslo.
+ *
+ * Aliasy:
+ *   sp_orzeczenia_hasla
+ *
+ * Przykładowe zastosowanie:
+ * <code>
+ *   $dataset = new ep_Dataset('sp_orzeczenia_hasla');
+ *   $data = $dataset->find_all();
+ * </code>
+ * @example objects/ep_SP_Haslo
+ *
+ * @see ep_SP_Haslo::$_aliases
+ *
+ * @category   System
+ * @package    ePF_API
+ * @subpackage Objects
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_SP_Haslo extends ep_Object{
+
+	/**
+	 * @see ep_Object::getDataStruct()
+	 */
+	public function getDataStruct() {
+		$result = parent::getDataStruct();
+		$result = array_merge($result, array (
+			'orzeczenie_sp_haslo_tematyczne_id' => ep_Object::TYPE_INT,
+			'orzeczenie_sp_id' => ep_Object::TYPE_INT,
+		));
+		return $result;
+	}
 
 	public $_aliases = array( 'sp_orzeczenia_hasla' );
 
@@ -12,20 +51,6 @@ class ep_SP_Haslo extends ep_Object{
 	 * @var ep_Orzeczenie_sp
 	 */
 	protected $_orzeczenie_sp = null;
-
-	/**
-	 * @return int
-	 */
-	public function get_orzeczenie_sp_haslo_tematyczne_id(){
-		return (int) $this->data['orzeczenie_sp_haslo_tematyczne_id'];
-	}
-
-	/**
-	 * @return int
-	 */
-	public function get_orzeczenie_sp_id(){
-		return (int) $this->data['orzeczenie_sp_id'];
-	}
 
 	/**
 	 * @return ep_SP_Haslo_Tematyczne

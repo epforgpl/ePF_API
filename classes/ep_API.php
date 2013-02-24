@@ -1,4 +1,25 @@
 <?php
+
+/**
+ * @file
+ * Ten plik jest częścią biblioteki ePF_API.
+ */
+
+/**
+ * Klasa ep_Api - podstawowy składnik biblioteki.
+ *
+ * Odpowiada za wysyłanie i pobieranie danych z serwera.
+ *
+ * @api
+ * @see ep_Api::$_version
+ * @see ep_Api::$server_address
+ *
+ * @category   API
+ * @package    ePF_API
+ * @subpackage Core
+ * @version    0.x.x-dev
+ * @since      version 0.1.0
+ */
 class ep_Api {
 
 	public $_version = '0.1';
@@ -26,6 +47,7 @@ class ep_Api {
 
 		$request_url = $this->server_address . $service;
 
+		$mt = microtime(true);
 		$data = '';
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $request_url );
@@ -36,19 +58,35 @@ class ep_Api {
 
 		$this->http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 		curl_close($ch);
-
+		$requestTime = microtime(true) - $mt;
+		
 		switch( $this->http_code ) {
 
 			case '401': {
 				throw new Exception('Brak kluczy eP_API. Zarejestruj konto na portalu http://sejmometr.pl i pobierz swoje prywatne klucze.');
+				break;
 			}
 
 			case '402': {
 				throw new Exception('Przekroczony limit żądań (3000 żądań na dobę).');
+				break;
 			}
 
 			case '200': {
-				return json_decode( $data, true );
+				$result = json_decode( $data, true );
+				if ($result===null) {
+					throw new Exception('Niepoprawna odpowiedź serwera: '.$data);
+				}
+				if (isset($result['performance'])) {
+					$result['performance']['client_total'] = $requestTime;
+				}
+				return $result;
+				break;
+			}
+			
+			default: {
+				throw new Exception('Błąd wewnętrzny: Nieoczekiwana odpowiedź serwera '.$this->http_code);
+				break;
 			}
 		}
 
@@ -68,7 +106,24 @@ class ep_Api {
 
 // Helper functions
 
+/**
+ * @addtogroup helpers
+ * @{
+ */
+
 if( !function_exists('sm_data_slowna') ) {
+
+  /**
+  * Helper: sm_data_slowna()
+  *
+  * @package    ePF_API
+  * @subpackage Helpers
+  * @version    0.x.x-dev
+  * @since      version 0.1.0
+  *
+  * @ingroup    Helpers
+  * @todo       move to class or separate file
+  */
 	function sm_data_slowna( $data ) {
 		$_miesiace = array(
 				1 => 'stycznia',
@@ -100,6 +155,17 @@ if( !function_exists('sm_data_slowna') ) {
 }
 
 if( !function_exists('sm_dzien_slowny') ) {
+  /**
+   * Helper: sm_dzien_slowny()
+   *
+   * @package    ePF_API
+   * @subpackage Helpers
+   * @version    0.x.x-dev
+   * @since      version 0.1.0
+   *
+   * @ingroup    Helpers
+   * @todo       move to class or separate file
+   */
 	function sm_dzien_slowny( $data ){
 		$dni = array('Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota', 'Niedziela');
 		$w = (int) date('w', strtotime($data));
@@ -107,3 +173,7 @@ if( !function_exists('sm_dzien_slowny') ) {
 		return $dni[ $w ];
 	}
 }
+
+/**
+ * @} End of "addtogroup helpers"
+ */
