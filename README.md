@@ -63,7 +63,7 @@ Pobieranie listy posłów na Sejm:
 Warunki korzystania
 -------------------
 
-Wydawcą portalu Sejmometr i operatorem platformy ePF_API jest Fundacja ePaństwo - niezależna organizacja pozarządowa, działająca na rzecz dostępu do informacji publicznych w Polsce. Zobacz http://epanstwo.org.pl.
+Wydawcą portalu Sejmometr i operatorem platformy ePF_API jest Fundacja ePaństwo - niezależna organizacja pozarządowa, działająca na rzecz dostępu do informacji publicznych w Polsce. Zobacz http://epf.org.pl.
 
 Informacje, do których dostęp uzyskuje się przez ePF_API są informacjami publicznymi w rozumieniu ustawy o dostępie do informacji publicznej. Są to również akty normatywne lub ich urzędowe projekty, urzędowe dokumenty, materiały, znaki i symbole, o których mowa w art. 4 ustawy o prawie autorskim i prawach pokrewnych. Jako takie zaś nie są przedmiotem prawa autorskiego.
 
