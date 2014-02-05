@@ -39,6 +39,37 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_nazwa()
+ * @method string get_nazwisko()
+ * @method string get_zawod()
+ * @method string get_plec()
+ * @method string get_data_urodzenia()
+ * @method string get_miejsce_urodzenia()
+ * @method string get_mowca_id()
+ * @method string get_biuro_html()
+ * @method string get_dopelniacz()
+ * @method string get_frekwencja()
+ * @method string get_imie_drugie()
+ * @method string get_imie_pierwsze()
+ * @method string get_klub_id()
+ * @method string get_liczba_glosow()
+ * @method string get_liczba_glosowan()
+ * @method string get_liczba_glosowan_opuszczonych()
+ * @method string get_liczba_glosowan_zbuntowanych()
+ * @method string get_liczba_projektow_uchwal()
+ * @method string get_liczba_projektow_ustaw()
+ * @method string get_liczba_slow()
+ * @method string get_liczba_wnioskow()
+ * @method string get_liczba_wypowiedzi()
+ * @method string get_miejsce_zamieszkania()
+ * @method string get_nazwa_odwrocona()
+ * @method string get_numer_na_liscie()
+ * @method string get_okreg_wyborczy_numer()
+ * @method string get_procent_glosow()
+ * @method string get_sejm_okreg_id()
+ * @method string get_zbuntowanie()
  */
 class ep_Posel extends ep_Object{
 

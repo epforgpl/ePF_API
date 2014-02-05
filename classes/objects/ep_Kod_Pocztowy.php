@@ -37,6 +37,16 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_kod()
+ * @method int get_kod_int()
+ * @method int get_wojewodztwo_id()
+ * @method string get_gminy()
+ * @method string get_liczba_gmin()
+ * @method string get_liczba_powiatow()
+ * @method string get_miejscowosci_str()
+ * @method string get_wojewodztwo()
  */
 class ep_Kod_Pocztowy extends ep_Object{
 

@@ -29,6 +29,21 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_data_start()
+ * @method string get_data_stop()
+ * @method string get_data_str()
+ * @method string get_img()
+ * @method string get_informacja_marszalka_id()
+ * @method string get_komunikat_id()
+ * @method string get_liczba_glosowan()
+ * @method string get_liczba_punktow()
+ * @method string get_opis()
+ * @method string get_tytul()
+ * @method string get_zapowiedz()
+ * @method string get_stats()
+ * @method string get_numer()
  */
 class ep_Sejm_Posiedzenie extends ep_Object{
 

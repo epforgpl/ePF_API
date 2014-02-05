@@ -37,6 +37,13 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_date()
+ * @method string get_datetime()
+ * @method string get_img()
+ * @method string get_opis()
+ * @method string get_tytul()
  */
 class ep_Sejm_Komunikat extends ep_Object{
 

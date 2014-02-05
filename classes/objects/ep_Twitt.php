@@ -29,6 +29,13 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_created_at()
+ * @method string get_html()
+ * @method string get_posel_id()
+ * @method string get_twitter_user_id()
+ * @method string get_twitt_id()
  */
 class ep_Twitt extends ep_Object{
 

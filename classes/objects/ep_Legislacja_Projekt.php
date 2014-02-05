@@ -32,6 +32,23 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_autorzy_html()
+ * @method string get_autor_typ_id()
+ * @method string get_data()
+ * @method string get_dokument_id()
+ * @method string get_opis()
+ * @method string get_opis_skrocony()
+ * @method string get_ostatnia_tresc_etap_id()
+ * @method string get_ostatni_etap_id()
+ * @method string get_rcl_projekt_id()
+ * @method string get_status_data()
+ * @method string get_status_id()
+ * @method string get_status_str()
+ * @method string get_typ_id()
+ * @method string get_tytul()
+ * @method string get_tytul_skrocony()
  */
 class ep_Legislacja_Projekt extends ep_Object{
 

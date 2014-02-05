@@ -29,6 +29,11 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method int get_dokument_id()
+ * @method int get_senator_id()
+ * @method string get_nazwa()
  */
 class ep_Senat_Oswiadczenie_Majatkowe extends ep_Object{
 

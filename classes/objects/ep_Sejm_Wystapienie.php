@@ -38,6 +38,21 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_data()
+ * @method string get_posiedzenie_id()
+ * @method string get_czlowiek_id()
+ * @method string get_debata_id()
+ * @method string get_dzien_sejmowy_id()
+ * @method string get_ilosc_slow()
+ * @method string get_klub_id()
+ * @method string get_kolejnosc()
+ * @method string get_punkt_id()
+ * @method string get_skrot()
+ * @method string get_stanowisko_id()
+ * @method string get_video()
+ * @method string get_tytul()
  */
 class ep_Sejm_Wystapienie extends ep_Object{
 

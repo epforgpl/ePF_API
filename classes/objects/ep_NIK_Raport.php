@@ -37,6 +37,15 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_data_moderacji()
+ * @method string get_data_publikacji()
+ * @method string get_dokument_id()
+ * @method string get_nik_id()
+ * @method string get_numer()
+ * @method string get_pdf_id()
+ * @method string get_tytul()
  */
 class ep_NIK_Raport extends ep_Object{
 

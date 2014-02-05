@@ -39,6 +39,14 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_archiwum()
+ * @method string get_grupa_id()
+ * @method string get_kategoria_id()
+ * @method string get_okres()
+ * @method string get_slug()
+ * @method string get_tytul()
  */
 class ep_BDL_Podgrupa extends ep_Object{
 

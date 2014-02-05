@@ -37,6 +37,25 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_czas()
+ * @method string get_debata_id()
+ * @method string get_dzien_id()
+ * @method string get_g()
+ * @method string get_l()
+ * @method string get_n()
+ * @method string get_numer()
+ * @method string get_p()
+ * @method string get_posiedzenie_id()
+ * @method string get_punkt_id()
+ * @method string get_typ_id()
+ * @method string get_tytul()
+ * @method string get_w()
+ * @method string get_wb()
+ * @method string get_wynik_id()
+ * @method string get_wystapienie_id()
+ * @method string get_z()
  */
 class ep_Sejm_Glosowanie extends ep_Object{
 

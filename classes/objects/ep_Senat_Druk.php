@@ -28,6 +28,12 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_data()
+ * @method string get_dokument_id()
+ * @method string get_numer()
+ * @method string get_tytul()
  */
 class ep_Senat_Druk extends ep_Object{
 

@@ -38,6 +38,28 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_nazwa()
+ * @method int get_typ_id()
+ * @method string get_adres()
+ * @method string get_bip_www()
+ * @method string get_dochody_roczne()
+ * @method string get_email()
+ * @method string get_fax()
+ * @method string get_liczba_ludnosci()
+ * @method string get_nazwa_urzedu()
+ * @method string get_nts()
+ * @method string get_powiat_id()
+ * @method string get_powierzchnia()
+ * @method string get_rada_nazwa()
+ * @method string get_szef_stanowisko_id()
+ * @method string get_telefon()
+ * @method string get_teryt()
+ * @method string get_wojewodztwo_id()
+ * @method string get_wydatki_roczne()
+ * @method string get_zadluzenie_roczne()
+ * @method string get_typ_nazwa()
  */
 class ep_Gmina extends ep_Object{
 

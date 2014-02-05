@@ -37,6 +37,22 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_adresaci_str()
+ * @method string get_data_ogloszenia()
+ * @method string get_data_status()
+ * @method string get_data_wplywu()
+ * @method string get_liczba_poslow()
+ * @method string get_mowca_id()
+ * @method string get_numer()
+ * @method string get_ogloszenie_posiedzenie_id()
+ * @method string get_poslowie_str()
+ * @method string get_skrot()
+ * @method string get_typ_id()
+ * @method string get_typ_nazwa()
+ * @method string get_tytul()
+ * @method string get_tytul_skrocony()
  */
 class ep_Sejm_Interpelacja extends ep_Object{
 

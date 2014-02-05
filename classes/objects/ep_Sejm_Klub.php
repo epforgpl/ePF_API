@@ -28,6 +28,21 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_nazwa()
+ * @method string get_liczba_kobiet()
+ * @method string get_liczba_mezczyzn()
+ * @method string get_liczba_poslow()
+ * @method string get_skrot()
+ * @method string get_srednia_frekfencja()
+ * @method string get_srednia_liczba_projektow_uchwal()
+ * @method string get_srednia_liczba_projektow_ustaw()
+ * @method string get_srednia_liczba_wnioskow()
+ * @method string get_srednia_liczba_wystapien()
+ * @method string get_srednia_poparcie_w_okregu()
+ * @method string get_srednia_udzial_w_obradach()
+ * @method string get_srednia_zbuntowanie()
  */
 class ep_Sejm_Klub extends ep_Object{
 

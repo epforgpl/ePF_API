@@ -38,6 +38,28 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_data_orzeczenia()
+ * @method string get_data_wplywu()
+ * @method string get_dlugosc_rozpatrywania()
+ * @method string get_hasla_str()
+ * @method string get_odrebne_status()
+ * @method string get_prawomocne()
+ * @method string get_sad_dopelniacz()
+ * @method string get_sad_nazwa()
+ * @method string get_sentencja_status()
+ * @method string get_skarzony_organ_id()
+ * @method string get_skarzony_organ_str()
+ * @method string get_sygnatura()
+ * @method string get_tezy_status()
+ * @method string get_typ_id()
+ * @method string get_typ_str()
+ * @method string get_uzasadnienie_status()
+ * @method string get_uzo_status()
+ * @method string get_wynik_str()
+ * @method string get_tytul_skrocony()
+ * @method string get_tytul()
  */
 class ep_SA_Orzeczenie extends ep_Object{
 

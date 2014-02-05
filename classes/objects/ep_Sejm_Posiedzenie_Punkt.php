@@ -29,6 +29,20 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_kolejnosc()
+ * @method string get_liczba_debat()
+ * @method string get_liczba_glosowan()
+ * @method string get_liczba_slow()
+ * @method string get_liczba_wystapien()
+ * @method string get_numer()
+ * @method string get_numer_int()
+ * @method string get_posiedzenie_id()
+ * @method string get_promo_wystapienie_id()
+ * @method string get_stats_str()
+ * @method string get_tytul()
+ * @method string get_video()
  */
 class ep_Sejm_Posiedzenie_Punkt extends ep_Object{
 

@@ -29,6 +29,11 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method int get_dokument_id()
+ * @method string get_nazwa()
+ * @method string get_senator_id()
  */
 class ep_Senat_rejestr_korzysci extends ep_Object{
 

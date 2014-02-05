@@ -38,6 +38,21 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method int get_akcept()
+ * @method string get_data()
+ * @method string get_hasla_tematyczne()
+ * @method string get_podstawa_prawna()
+ * @method int get_sad_sp_id()
+ * @method string get_sad()
+ * @method string get_str_ident()
+ * @method string get_sygnatura()
+ * @method string get_teza()
+ * @method string get_typ()
+ * @method int get_typ_id()
+ * @method string get_wydzial()
+ * @method string get_dopelniacz()
  */
 class ep_SP_Orzeczenie extends ep_Object{
 

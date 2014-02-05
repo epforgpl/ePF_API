@@ -29,6 +29,23 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_akcept()
+ * @method string get_data()
+ * @method string get_dokument_id()
+ * @method string get_forma()
+ * @method int get_item_id()
+ * @method string get_izby_str()
+ * @method string get_jednostka_str()
+ * @method int get_orzeczenie_sn_forma_id()
+ * @method int get_orzeczenie_sn_jednostka_id()
+ * @method int get_orzeczenie_sn_sklad_id()
+ * @method string get_przewodniczacy()
+ * @method int get_przewodniczacy_id()
+ * @method string get_sprawozdawcy_str()
+ * @method string get_sygnatura()
+ * @method string get_wspolsprawozdawcy_str()
  */
 class ep_SN_Orzeczenie extends ep_Object{
 

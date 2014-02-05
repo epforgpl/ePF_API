@@ -29,6 +29,41 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_autor_id()
+ * @method string get_autor_nazwa()
+ * @method string get_data_publikacji()
+ * @method string get_data_wejscia_w_zycie()
+ * @method string get_data_wydania()
+ * @method string get_dokument_id()
+ * @method string get_isap_data_obowiazywania()
+ * @method string get_isap_data_ogloszenia()
+ * @method string get_isap_data_uchylenia()
+ * @method string get_isap_data_wejscia_w_zycie()
+ * @method string get_isap_data_wydania()
+ * @method string get_isap_data_wygasniecia()
+ * @method string get_isap_id()
+ * @method string get_isap_organ_uprawniony_str()
+ * @method string get_isap_organ_wydajacy_str()
+ * @method string get_isap_organ_zobowiazany_str()
+ * @method string get_isap_plik_dokument_id()
+ * @method string get_isap_plik_id()
+ * @method string get_isap_status_str()
+ * @method string get_isap_uwagi_str()
+ * @method string get_label()
+ * @method string get_label_html()
+ * @method string get_liczba_zalacznikow()
+ * @method string get_nr()
+ * @method string get_poz()
+ * @method string get_rok()
+ * @method string get_status_id()
+ * @method string get_sygnatura()
+ * @method string get_typ_id()
+ * @method string get_typ_nazwa()
+ * @method string get_tytul()
+ * @method string get_tytul_skrocony()
+ * @method string get_zrodlo()
  */
 class ep_Prawo extends ep_Object{
 

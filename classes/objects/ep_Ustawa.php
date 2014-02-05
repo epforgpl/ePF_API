@@ -31,6 +31,26 @@
  * @subpackage Objects
  * @version    0.x.x-dev
  * @since      version 0.1.0
+ * 
+ * @method int get_id()
+ * @method string get_dokument_id()
+ * @method string get_isip_plik_typ_id()
+ * @method string get_dzial_id()
+ * @method string get_autor_id()
+ * @method string get_data_publikacji()
+ * @method string get_data_wejscia_w_zycie()
+ * @method string get_data_wydania()
+ * @method string get_isap_data_uchylenia()
+ * @method string get_isap_data_wygasniecia()
+ * @method string get_isap_id()
+ * @method string get_isap_uwagi_str()
+ * @method string get_status_id()
+ * @method string get_sygnatura()
+ * @method string get_typ_id()
+ * @method string get_typ_nazwa()
+ * @method string get_tytul()
+ * @method string get_tytul_skrocony()
+ * @method string get_zrodlo()
  */
 class ep_Ustawa extends ep_Object{
 
